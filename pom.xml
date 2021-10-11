@@ -165,5 +165,6 @@
     
   <modules>
   	<module>ego-pojo</module>
+  	<module>ego-dubbo-service</module>
   </modules>
 </project>
