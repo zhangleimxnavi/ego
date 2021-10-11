@@ -1,1 +1,1 @@
-# ego init
+# ego init ok
