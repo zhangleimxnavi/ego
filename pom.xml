@@ -167,5 +167,6 @@
   	<module>ego-pojo</module>
   	<module>ego-dubbo-service</module>
   	<module>ego-commons</module>
+  	<module>ego-dubbo-service-impl</module>
   </modules>
 </project>
