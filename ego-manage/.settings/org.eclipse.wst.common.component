@@ -4,6 +4,12 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="ego-dubbo-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ego-dubbo-service/ego-dubbo-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ego-pojo-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ego-pojo/ego-pojo">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="ego-manage"/>
         <property name="java-output-path" value="/ego-manage/target/classes"/>
     </wb-module>

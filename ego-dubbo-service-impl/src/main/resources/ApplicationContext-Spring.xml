@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+ 	
+
+
+ 	
+ 	
+ 	<context:component-scan base-package="com.mxnavi.server.ego.*.service.impl"></context:component-scan>
+ 	
+ 	<context:property-placeholder location="classpath:config.properties,datasource.properties"/>
+ 	
+
+ 	
+ 	 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+ 		<property name="username" value="${jdbc.username}"></property>
+ 		<property name="password" value="${jdbc.password}"></property>
+ 		<property name="url" value="${jdbc.url}"></property>
+ 	</bean>
+ 	
+ 	
+ 	
+ 	<bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+ 		<property name="dataSource" ref="dataSource"></property>
+ 		<property name="typeAliasesPackage" value="com.mxnavi.server.ego.pojo"></property>
+ 		<property name="configLocation" value="classpath:mybatis.xml"></property>
+ 	</bean>
+ 	
+ 	
+ 	
+ 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+ 		<property name="basePackage" value="com.mxnavi.server.ego.mapper"></property>
+<!--  		<property name="sqlSessionFactory" ref="factory"></property> -->
+ 		<property name="sqlSessionFactoryBeanName" value="factory"></property>
+ 	</bean>
+ 
+	
+
+ 	
+<!--  	
+ 	<bean id="loginAdvice" class="com.mxnavi.aop.LoginAdvice"></bean>
+ 	
+ 	<bean id="beforeAdvice" class="com.mxnavi.aop.BeforAdvice"></bean>
+ 	<bean id="afterAdvice" class="com.mxnavi.aop.AfterAdvice"></bean>
+ 
+ 	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+ 	
+ 	<aop:config>
+ 		<aop:pointcut expression="execution(* com.mxnavi.service.LoginService.selUser(..))" id="myPoint"/>
+ 		<aop:advisor advice-ref="beforeAdvice" pointcut-ref="myPoint"/>
+ 		<aop:advisor advice-ref="afterAdvice" pointcut-ref="myPoint"/>
+ 		<aop:advisor advice-ref="loginAdvice" pointcut-ref="myPoint"/>
+ 	</aop:config>
+ 	 -->
+ 	
+ 	
+ 	
+<!--  	<bean id="loginService" class="com.mxnavi.service.LoginService" >
+		<property name="userMapper" ref="userMapper"></property>
+	</bean> -->
+ 	
+ 	
+ 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+ 		<property name="dataSource" ref="dataSource"></property>
+ 	</bean>
+ 	
+ 	<tx:advice id="myAdvice" transaction-manager="txManager">
+ 		<tx:attributes>
+ 			<tx:method name="ins*" />
+			<tx:method name="del*"/>
+			<tx:method name="upd*"/>
+			<tx:method name="*" read-only="true"/>
+ 		</tx:attributes>
+ 	</tx:advice>
+ 	
+ 	
+ 	<aop:config>
+ 		<aop:pointcut expression="execution(* com.mxnavi.server.ego.dubbo.service.impl.*.*(..))" id="myPoint"/>
+ 		<aop:advisor advice-ref="myAdvice" pointcut-ref="myPoint"/>
+ 	</aop:config>
+ 	
+ 
+ 
+ 
+ 
+ 
+ </beans>
