@@ -15,36 +15,35 @@
  
   	<context:component-scan base-package="com.mxnavi.server.ego.manage.controller"></context:component-scan>
  
-<!--  	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
- 		<property name="prefix" value="/WEB-INF/pages/"></property>
+ 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ 		<property name="prefix" value="/WEB-INF/jsp/"></property>
  		<property name="suffix" value=".jsp"></property>
- 	</bean> -->
+ 	</bean>
  
 
  	
  	<mvc:annotation-driven></mvc:annotation-driven>
  	
 
- 	<mvc:resources location="/imgs/" mapping="/imgs/**"></mvc:resources>
- 	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+ 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
+ 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
+ 	<mvc:resources location="/WEB-INF/imgs/" mapping="/imgs/**"></mvc:resources>
  	
  	
  	
- 	
-<!--  	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
  		<property name="maxUploadSize" value="500"></property>
-
  	</bean>
  	
  	
- 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+<!--  	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
  		<property name="exceptionMappings">
  			<props>
  				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error2.jsp</prop>
  			</props>
  		</property>
- 	</bean>
-  -->
+ 	</bean> -->
+ 
  
  	
  

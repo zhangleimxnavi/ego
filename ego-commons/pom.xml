@@ -8,4 +8,19 @@
   <artifactId>ego-commons</artifactId>
   <name>ego-commons</name>
   <description>ego-commons utils</description>
+  
+   <dependencies>
+<!--   	<dependency>
+  		 <groupId>com.mxnavi.server</groupId>
+    	 <artifactId>ego-pojo</artifactId>
+   		 <version>0.0.1-SNAPSHOT</version>
+  	</dependency> -->
+  	
+  	
+  	
+  	
+  	
+  </dependencies>
+  
+  
 </project>
