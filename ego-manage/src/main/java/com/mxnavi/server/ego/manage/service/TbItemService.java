@@ -1,5 +1,9 @@
 package com.mxnavi.server.ego.manage.service;
 
-public class TbItemService {
+import com.mxnavi.server.ego.commons.pojo.EasyUiDataGrid;
 
+public interface TbItemService {
+	
+	EasyUiDataGrid selectItemPage(int page,int rows);
+	
 }

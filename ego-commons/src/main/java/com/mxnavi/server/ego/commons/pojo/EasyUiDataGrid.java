@@ -1,9 +1,10 @@
 package com.mxnavi.server.ego.commons.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class EasyUiDataGrid {
+public class EasyUiDataGrid implements Serializable{
 	
 	private long total;
 	
