@@ -8,5 +8,7 @@ import com.mxnavi.server.ego.pojo.TbItem;
 public interface TbItemDubboService {
 	
 	EasyUiDataGrid selectItemPage(int page,int rows);
+	
+	int updateStatusByPrimarykey(TbItem tbItem);
 
 }

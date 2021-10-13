@@ -19,7 +19,8 @@ public class TbItem implements Serializable{
     private String image;
 
     private Long cid;
-
+    
+    //对应数据库 tinyint类型
     private Byte status;
 
     private Date created;

@@ -34,6 +34,15 @@ public class TbItemDubboServiceImpl implements TbItemDubboService{
 		return easyUiDataGrid;
 	}
 
+	@Override
+	public int updateStatusByPrimarykey(TbItem tbItem) {
+		// TODO Auto-generated method stub
+		return tbItemMapper.updateByPrimaryKeySelective(tbItem);
+	}
+
+	
+	
+	
 	
 	
 }
