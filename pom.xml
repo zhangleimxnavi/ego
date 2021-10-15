@@ -24,6 +24,7 @@
 		<zkClient-version>0.10</zkClient-version>
 		<tomcat-version>2.2</tomcat-version>
 		<pagehelper-version>4.1.6</pagehelper-version>
+		<ftpClient-version>3.3</ftpClient-version>
 	</properties>
 	
 	
@@ -128,6 +129,14 @@
 				<artifactId>zkclient</artifactId>
 				<version>${zkClient-version}</version>
 			</dependency>
+			<!-- ftp client -->
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>${ftpClient-version}</version>
+			</dependency>
+			
+			
 		</dependencies>
 	</dependencyManagement>
 	

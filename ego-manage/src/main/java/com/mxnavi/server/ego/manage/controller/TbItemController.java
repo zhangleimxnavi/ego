@@ -1,14 +1,18 @@
 package com.mxnavi.server.ego.manage.controller;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mxnavi.server.ego.commons.pojo.EasyUiDataGrid;
 import com.mxnavi.server.ego.commons.pojo.EgoResult;
+import com.mxnavi.server.ego.commons.util.FtpUtil;
 import com.mxnavi.server.ego.manage.service.impl.TbItemServiceImpl;
 
 @Controller
@@ -106,6 +110,12 @@ public class TbItemController {
 		return egoResult;
 		
 	}
+	
+	
+
+	
+	
+	
 
 	
 	
