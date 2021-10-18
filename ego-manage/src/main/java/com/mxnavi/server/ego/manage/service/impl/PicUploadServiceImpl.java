@@ -55,11 +55,15 @@ public class PicUploadServiceImpl implements PicUploadService{
 	private String path;
 	
 	
+	
+	/**
+	 * 正常我们原来的service层不处理异常，有异常要抛出，是因为我们想要让spring的声明式事务来处理异常并进行回滚，但是此处并不涉及到数据库操作，没有声明式事务，因此异常也可以直接在service层处理	
+	 */
 	@Override
 	public Map picUpload(MultipartFile uploadFile) throws IOException {
 		
 		
-		Map map = new HashMap<Object, Object>();
+		Map map = new HashMap<String, Object>();
 		
 		String realFileName = uploadFile.getOriginalFilename();
 

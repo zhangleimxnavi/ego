@@ -1,5 +1,7 @@
 package com.mxnavi.server.ego.manage.controller;
 
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,7 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mxnavi.server.ego.commons.pojo.EasyUiDataGrid;
 import com.mxnavi.server.ego.commons.pojo.EgoResult;
 import com.mxnavi.server.ego.commons.util.FtpUtil;
+import com.mxnavi.server.ego.commons.util.IDUtils;
 import com.mxnavi.server.ego.manage.service.impl.TbItemServiceImpl;
+import com.mxnavi.server.ego.pojo.TbItem;
+import com.mxnavi.server.ego.pojo.TbItemDesc;
 
 @Controller
 public class TbItemController {
@@ -114,7 +119,33 @@ public class TbItemController {
 	
 
 	
-	
+	@RequestMapping("/item/save")
+	@ResponseBody
+	public EgoResult insTbItem(TbItem tbItem,String desc){
+			
+/*		
+		  `created` datetime NOT NULL COMMENT '创建时间',
+		  `updated` datetime NOT NULL COMMENT '更新时间',
+		  id*/
+		
+			EgoResult egoResult = new EgoResult();
+
+			
+			try {
+				int index = tbItemServiceImpl.insTbItem(tbItem, desc);
+				if(index == 1){
+					egoResult.setStatus("200");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				egoResult.setData(e.getMessage());
+				
+			}
+			
+			
+			return egoResult;
+			
+		}
 	
 
 	

@@ -28,10 +28,10 @@ public class PicUploadController {
 	
 	/**
 	 * 
-	* @Title: imgUpload å›¾ç‰‡ä¸Šä¼ 
-	* kindEditorå’Œæµè§ˆå™¨ å…¼å®¹æ€§ä¸æ˜¯å¾ˆå¥½ï¼Œå› æ­¤å›¾ç‰‡ä¸Šä¼ åº”è¯¥ä½¿ç”¨å…¶ä»–æ›´å¥½çš„æ–¹æ¡ˆ
-	* @param @return    å‚æ•°
-	* @return Map    è¿”å›ç±»å‹
+	* @Title: imgUpload Í¼Æ¬ÉÏ´«
+	* kindEditorºÍä¯ÀÀÆ÷ ¼æÈİĞÔ²»ÊÇºÜºÃ£¬Òò´ËÍ¼Æ¬ÉÏ´«Ó¦¸ÃÊ¹ÓÃÆäËû¸üºÃµÄ·½°¸
+	* @param @return    ²ÎÊı
+	* @return Map    ·µ»ØÀàĞÍ
 	* @throws
 	 */
 	
@@ -53,21 +53,28 @@ public class PicUploadController {
 	/**
 	 * 
 	* @Title: imgUpload
-	* å¼‚å¸¸æŠ›å‡ºï¼Œéœ€è¦åœ¨ cotrollerå®ç°å¼‚å¸¸å¤„ç†æœºåˆ¶
+	* Òì³£Å×³ö£¬ĞèÒªÔÚ cotrollerÊµÏÖÒì³£´¦Àí»úÖÆ
 	* @param @param filename
 	* @param @return
-	* @param @throws IOException    å‚æ•°
-	* @return Map    è¿”å›ç±»å‹
+	* @param @throws IOException    ²ÎÊı
+	* @return Map    ·µ»ØÀàĞÍ
 	* @throws
 	 */
 	@RequestMapping("/pic/upload")
 	@ResponseBody
-	public Map imgUpload(MultipartFile uploadFile) throws IOException{
+	public Map imgUpload(MultipartFile uploadFile){
 		
+		Map map = new HashMap<String,Object>();
 		
-		return picUploadServiceImpl.picUpload(uploadFile);
+		try {
+			map = picUploadServiceImpl.picUpload(uploadFile);
+		} catch (IOException e) {
+			map.put("error", 1);
+			map.put("message", "Í¼Æ¬ÉÏ´«Ê§°Ü,·şÎñÆ÷³öÏÖÒì³££¬ÇëÉÔºó");
+		}
 		
-			
+		return map;	
+		
 	}
 	
 	
