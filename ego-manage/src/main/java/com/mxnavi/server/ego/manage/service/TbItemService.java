@@ -11,6 +11,6 @@ public interface TbItemService {
 	int updateStatusByPrimarykey(String ids,byte status);
 	
 
-	int insTbItem(TbItem tbItem, String desc) throws Exception;
+	int insTbItem(TbItem tbItem, String desc,String itemParams) throws Exception;
 	
 }

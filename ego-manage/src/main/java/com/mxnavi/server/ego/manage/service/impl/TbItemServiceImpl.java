@@ -11,6 +11,7 @@ import com.mxnavi.server.ego.dubbo.service.TbItemDubboService;
 import com.mxnavi.server.ego.manage.service.TbItemService;
 import com.mxnavi.server.ego.pojo.TbItem;
 import com.mxnavi.server.ego.pojo.TbItemDesc;
+import com.mxnavi.server.ego.pojo.TbItemParamItem;
 
 
 @Service
@@ -70,7 +71,7 @@ public class TbItemServiceImpl implements TbItemService{
 	* @see com.mxnavi.server.ego.manage.service.TbItemService#insTbItem(com.mxnavi.server.ego.pojo.TbItem, com.mxnavi.server.ego.pojo.TbItemDesc)
 	*/
 	@Override
-	public int insTbItem(TbItem tbItem, String desc) throws Exception {
+	public int insTbItem(TbItem tbItem, String desc,String itemParams) throws Exception {
 		
 		Date date = new Date();
 		
@@ -84,7 +85,13 @@ public class TbItemServiceImpl implements TbItemService{
 		tbItemDesc.setUpdated(date);
 		tbItemDesc.setItemDesc(desc);
 		
-		return tbItemDubboServiceImpl.insTbItem(tbItem, tbItemDesc);
+		TbItemParamItem tbItemParamItem = new TbItemParamItem();
+		tbItemParamItem.setCreated(date);
+		tbItemParamItem.setItemId(tbItem.getId());
+		tbItemParamItem.setParamData(itemParams);
+		tbItemParamItem.setUpdated(date);
+		
+		return tbItemDubboServiceImpl.insTbItem(tbItem,tbItemDesc,tbItemParamItem);
 /*		return 1;*/
 	}
 

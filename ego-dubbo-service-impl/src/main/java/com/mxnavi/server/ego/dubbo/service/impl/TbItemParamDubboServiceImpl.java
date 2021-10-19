@@ -82,4 +82,32 @@ public class TbItemParamDubboServiceImpl implements TbItemParamDubboService{
 		
 	}
 
+
+	/* (非 Javadoc)
+	* <p>Description: </p>
+	* @return
+	* @see com.mxnavi.server.ego.dubbo.service.TbItemParamDubboService#selByCid()
+	*/
+	@Override
+	public List<TbItemParam> selByCid(long cid) {
+		
+		TbItemParamExample example = new TbItemParamExample();
+		example.createCriteria().andItemCatIdEqualTo(cid);
+		List<TbItemParam> lists  = tbItemParamMapper.selectByExampleWithBLOBs(example);
+		
+		return lists;
+	}
+
+
+	/* (非 Javadoc)
+	* <p>Description:新增商品类别对应的参数模板 </p>
+	* @param tbItemParam
+	* @return
+	* @see com.mxnavi.server.ego.dubbo.service.TbItemParamDubboService#insTbItemParam(com.mxnavi.server.ego.pojo.TbItemParam)
+	*/
+	@Override
+	public int insTbItemParam(TbItemParam tbItemParam) {
+		return tbItemParamMapper.insertSelective(tbItemParam);
+	}
+
 }

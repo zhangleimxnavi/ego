@@ -121,7 +121,7 @@ public class TbItemController {
 	
 	@RequestMapping("/item/save")
 	@ResponseBody
-	public EgoResult insTbItem(TbItem tbItem,String desc){
+	public EgoResult insTbItem(TbItem tbItem,String desc,String itemParams){
 			
 /*		
 		  `created` datetime NOT NULL COMMENT '创建时间',
@@ -132,7 +132,7 @@ public class TbItemController {
 
 			
 			try {
-				int index = tbItemServiceImpl.insTbItem(tbItem, desc);
+				int index = tbItemServiceImpl.insTbItem(tbItem, desc,itemParams);
 				if(index == 1){
 					egoResult.setStatus("200");
 				}

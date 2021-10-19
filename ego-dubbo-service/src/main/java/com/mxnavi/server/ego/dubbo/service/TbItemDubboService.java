@@ -5,6 +5,7 @@ import java.util.List;
 import com.mxnavi.server.ego.commons.pojo.EasyUiDataGrid;
 import com.mxnavi.server.ego.pojo.TbItem;
 import com.mxnavi.server.ego.pojo.TbItemDesc;
+import com.mxnavi.server.ego.pojo.TbItemParamItem;
 
 public interface TbItemDubboService {
 	
@@ -22,7 +23,7 @@ public interface TbItemDubboService {
 	* @return int    ∑µªÿ¿‡–Õ
 	* @throws
 	*/
-	int insTbItem(TbItem tbItem, TbItemDesc tbItemDesc) throws Exception;
+	int insTbItem(TbItem tbItem, TbItemDesc tbItemDesc,TbItemParamItem tbItemParamItem) throws Exception;
 	
 
 

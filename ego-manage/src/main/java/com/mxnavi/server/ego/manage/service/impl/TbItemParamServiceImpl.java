@@ -87,7 +87,25 @@ public class TbItemParamServiceImpl implements TbItemParamService{
 		return tbItemParamDubboServiceImpl.delByIds(ids);
 
 	}
+
 	
+	public List<TbItemParam> selByCid(long cid){
+		return tbItemParamDubboServiceImpl.selByCid(cid);
+	}
+
+
+
+	/* (·Ç Javadoc)
+	* <p>Description: </p>
+	* @param tbItemParam
+	* @return
+	* @see com.mxnavi.server.ego.manage.service.TbItemParamService#insTbItemParam(com.mxnavi.server.ego.pojo.TbItemParam)
+	*/
+	@Override
+	public int insTbItemParam(TbItemParam tbItemParam) {
+		return tbItemParamDubboServiceImpl.insTbItemParam(tbItemParam);
+		
+	}
 	
 
 }
