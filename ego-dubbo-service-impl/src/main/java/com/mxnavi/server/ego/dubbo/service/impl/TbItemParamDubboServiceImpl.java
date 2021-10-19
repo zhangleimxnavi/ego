@@ -56,4 +56,30 @@ public class TbItemParamDubboServiceImpl implements TbItemParamDubboService{
 		return easyUiDataGrid;
 	}
 
+	
+	/* (非 Javadoc)
+	* <p>Description:通过id删除 </p>
+	* @param id
+	* @return
+	* @see com.mxnavi.server.ego.dubbo.service.TbItemParamDubboService#delById(int)
+	*/
+	@Override
+	public int delByIds(String [] ids) throws Exception {
+
+		int index = 0;
+		
+		
+		for (String id : ids) {
+			index += tbItemParamMapper.deleteByPrimaryKey(Long.parseLong(id));
+		}
+		
+		
+		if(index == ids.length){
+			return 1;
+		}else{
+			throw new Exception("删除失败，请不要重复删除，回滚所有删除内容");
+		}
+		
+	}
+
 }

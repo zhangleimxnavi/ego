@@ -62,7 +62,7 @@ public class TbItemParamServiceImpl implements TbItemParamService{
 			TbItemCat tbItemCat = tbItemCatDubboServiceImpl.selTbItemCatById(tbItemParam.getItemCatId());
 			child.setItemCatName(tbItemCat.getName());
 			
-			System.out.println("child"+child);
+/*			System.out.println("child"+child);*/
 			
 			childLists.add(child);
 		}
@@ -70,6 +70,22 @@ public class TbItemParamServiceImpl implements TbItemParamService{
 		easyUiDataGrid.setRows(childLists);
 		
 		return easyUiDataGrid;
+	}
+
+	
+	
+	/* (·Ç Javadoc)
+	* <p>Description: </p>
+	* @param ids
+	* @return
+	* @throws Exception
+	* @see com.mxnavi.server.ego.manage.service.TbItemParamService#delByIds(java.util.List)
+	*/
+	@Override
+	public int delByIds(String [] ids) throws Exception{
+		
+		return tbItemParamDubboServiceImpl.delByIds(ids);
+
 	}
 	
 	

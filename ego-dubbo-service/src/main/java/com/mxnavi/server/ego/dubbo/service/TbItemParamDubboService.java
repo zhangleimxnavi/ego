@@ -3,6 +3,8 @@
  */
 package com.mxnavi.server.ego.dubbo.service;
 
+import java.util.List;
+
 import com.mxnavi.server.ego.commons.pojo.EasyUiDataGrid;
 
 /**
@@ -22,6 +24,8 @@ public interface TbItemParamDubboService {
 	*/
 	EasyUiDataGrid listAll(int page, int rows);
 	
+	
+	int delByIds(String [] ids) throws Exception;
 	
 	
 	

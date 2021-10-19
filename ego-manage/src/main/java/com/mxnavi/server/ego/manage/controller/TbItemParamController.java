@@ -3,6 +3,8 @@
  */
 package com.mxnavi.server.ego.manage.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -28,5 +30,28 @@ public class TbItemParamController {
 	public EasyUiDataGrid listAll(int page, int rows){
 		return tbItemParamServiceImpl.listAll(page, rows);
 	}
+	
+	
+	@RequestMapping("/item/param/delete")
+	@ResponseBody
+	public EgoResult delByIds(String ids){
+		
+		EgoResult result = new EgoResult();
+		String[] idsChar = ids.split(",");
+		
+		try {
+			int index = tbItemParamServiceImpl.delByIds(idsChar);
+			if(index == 1){
+				result.setStatus("200");
+			}
+		} catch (Exception e) {
+			result.setData(e.getMessage());
+/*			e.printStackTrace();*/
+		}
+		
+		return result;
+	}
+	
+	
 	
 }
