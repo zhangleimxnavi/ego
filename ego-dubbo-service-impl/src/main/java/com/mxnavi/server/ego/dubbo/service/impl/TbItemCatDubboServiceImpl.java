@@ -38,6 +38,19 @@ public class TbItemCatDubboServiceImpl implements TbItemCatDubboService{
 		List<TbItemCat> lists =  tbItemCatMapper.selectByExample(tbItemCatExample);
 		return lists;
 	}
+
+
+	/* (·Ç Javadoc)
+	* <p>Description: </p>
+	* @param id
+	* @return
+	* @see com.mxnavi.server.ego.dubbo.service.TbItemCatDubboService#selTbItemCatById(long)
+	*/
+	@Override
+	public TbItemCat selTbItemCatById(long id) {
+		// TODO Auto-generated method stub
+		return tbItemCatMapper.selectByPrimaryKey(id);
+	}
 	
 	
 	

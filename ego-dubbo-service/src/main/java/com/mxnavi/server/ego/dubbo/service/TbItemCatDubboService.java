@@ -14,5 +14,7 @@ import com.mxnavi.server.ego.pojo.TbItemCat;
 public interface TbItemCatDubboService {
 	
 	List<TbItemCat> selTbItemCatByPid(long pid);
+	
+	TbItemCat selTbItemCatById(long id);
 
 }
