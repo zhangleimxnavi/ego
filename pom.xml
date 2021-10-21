@@ -178,5 +178,7 @@
   	<module>ego-commons</module>
   	<module>ego-dubbo-service-impl</module>
   	<module>ego-manage</module>
+  	<module>ego-portal</module>
+  	<module>ego-item</module>
   </modules>
 </project>
