@@ -10,7 +10,7 @@ public class PageController {
 	@RequestMapping("/")
 	public String showIndexPage(){
 		
-		return "index";
+		return "forward:/content/bigImag";
 	}
 	
 

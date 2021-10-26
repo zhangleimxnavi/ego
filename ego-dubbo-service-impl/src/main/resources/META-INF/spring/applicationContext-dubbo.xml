@@ -33,9 +33,13 @@
 	<dubbo:service interface="com.mxnavi.server.ego.dubbo.service.TbItemParamDubboService" ref="tbItemParamDubboServiceImpl"></dubbo:service>
 	<bean id="tbItemParamDubboServiceImpl" class="com.mxnavi.server.ego.dubbo.service.impl.TbItemParamDubboServiceImpl"></bean>
 	
-	<!-- content功能接口 -->
+	<!-- content 类别 功能接口 -->
 	<dubbo:service interface="com.mxnavi.server.ego.dubbo.service.TbContentCategoryDubboService" ref="tbContentCategoryDubboServiceImpl"></dubbo:service>
 	<bean id="tbContentCategoryDubboServiceImpl" class="com.mxnavi.server.ego.dubbo.service.impl.TbContentCategoryDubboServiceImpl"></bean>
+	
+	<!-- content 功能接口 -->
+	<dubbo:service interface="com.mxnavi.server.ego.dubbo.service.TbContentDubboService" ref="tbContentDubboServiceImpl"></dubbo:service>
+	<bean id="tbContentDubboServiceImpl" class="com.mxnavi.server.ego.dubbo.service.impl.TbContentDubboServiceImpl"></bean>
 	
 	<import resource="../../ApplicationContext-Spring.xml"/>
 </beans>
