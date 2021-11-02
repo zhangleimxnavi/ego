@@ -27,4 +27,6 @@ public interface TbItemDubboService {
 	
 
 	List<TbItem> listAll();
+	
+	TbItem selById(long id);
 }

@@ -106,6 +106,18 @@ public class TbItemDubboServiceImpl implements TbItemDubboService{
 		return list;
 	}
 
+	
+	
+	/* (·Ç Javadoc)
+	* <p>Description: </p>
+	* @return
+	* @see com.mxnavi.server.ego.dubbo.service.TbItemDubboService#selById()
+	*/
+	@Override
+	public TbItem selById(long id) {
+		return tbItemMapper.selectByPrimaryKey(id);
+	}
+
 
 	
 	

@@ -1,9 +1,15 @@
 package com.mxnavi.server.ego.manage.service.impl;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.impl.SolrHttpClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +23,7 @@ import com.mxnavi.server.ego.manage.service.TbItemService;
 import com.mxnavi.server.ego.pojo.TbItem;
 import com.mxnavi.server.ego.pojo.TbItemDesc;
 import com.mxnavi.server.ego.pojo.TbItemParamItem;
+import com.mxnavi.server.ego.redis.dao.RedisDao;
 
 
 @Service
@@ -29,7 +36,12 @@ public class TbItemServiceImpl implements TbItemService{
 	@Value("${com.mxnavi.search.searchUrl}")
 	private String url;
 	
+	@Resource
+	private RedisDao redisDaoImpl;
 
+	@Resource
+	private HttpSolrClient solrClient;
+	
 	@Override
 	public EasyUiDataGrid selectItemPage(int page, int rows) {
 		// TODO Auto-generated method stub
@@ -47,7 +59,7 @@ public class TbItemServiceImpl implements TbItemService{
 	* @see com.mxnavi.server.ego.manage.service.TbItemService#updateStatusByPrimarykey(java.lang.String, byte)
 	*/
 	@Override
-	public int updateStatusByPrimarykey(String ids, byte status) {
+	public int updateStatusByPrimarykey(String ids, byte status) throws SolrServerException, IOException {
 		
 		int index = 0;
 		
@@ -60,7 +72,24 @@ public class TbItemServiceImpl implements TbItemService{
 		}
 		
 		if (index == idsChar.length){
+
+			if(status == 2||status == 3){
+				//如果缓存在redis中，则清除缓存
+				for (String idString : idsChar) {	
+					if(redisDaoImpl.exists("item:"+idString)){
+						redisDaoImpl.del("item:"+idString);
+					}
+					
+					//清除solr 文档
+					//正常应该只有ego-search项目才能操作solr，我们应该 通过 httpClient 调用 ego-search项目的接口
+					solrClient.deleteById(idString);
+					solrClient.commit();
+				}
+
+			}	
+
 			return 1;
+			
 		}else{
 			return 0;
 		}

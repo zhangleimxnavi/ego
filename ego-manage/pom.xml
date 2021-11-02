@@ -11,6 +11,10 @@
   <description>ego-manage</description>
   
   <dependencies>
+  			<dependency>
+		    	<groupId>org.apache.solr</groupId>
+		    	<artifactId>solr-solrj</artifactId>
+			</dependency>
        		<dependency>
 		  		 <groupId>com.mxnavi.server</groupId>
 		    	 <artifactId>ego-commons</artifactId>

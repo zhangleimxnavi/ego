@@ -1,11 +1,13 @@
 package com.mxnavi.server.ego.manage.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,14 +21,19 @@ import com.mxnavi.server.ego.commons.util.IDUtils;
 import com.mxnavi.server.ego.manage.service.impl.TbItemServiceImpl;
 import com.mxnavi.server.ego.pojo.TbItem;
 import com.mxnavi.server.ego.pojo.TbItemDesc;
+import com.mxnavi.server.ego.redis.dao.RedisDao;
+import com.mxnavi.server.ego.redis.dao.impl.RedisDaoImpl;
 
 @Controller
 public class TbItemController {
+	
+
 	
 	@Resource
 	private TbItemServiceImpl tbItemServiceImpl;
 	
 
+	
 	/**
 	 * 
 	* @Title: selectItemPage  查询商品
@@ -59,9 +66,16 @@ public class TbItemController {
 		
 		EgoResult egoResult = new EgoResult();
 		
-		int index = tbItemServiceImpl.updateStatusByPrimarykey(ids, (byte)3);
+		int index = 0;
+		try {
+			index = tbItemServiceImpl.updateStatusByPrimarykey(ids, (byte)3);
+		} catch (Exception e) {
+			egoResult.setData("服务器异常");
+			e.printStackTrace();
+		}
+
 		if(index == 1){
-			egoResult.setStatus("200");
+			egoResult.setStatus("200");		
 		}
 		
 		return egoResult;
@@ -84,7 +98,13 @@ public class TbItemController {
 		
 		EgoResult egoResult = new EgoResult();
 		
-		int index = tbItemServiceImpl.updateStatusByPrimarykey(ids, (byte)1);
+		int index = 0;
+		try {
+			index = tbItemServiceImpl.updateStatusByPrimarykey(ids, (byte)1);
+		} catch (Exception e) {
+			egoResult.setData("服务器异常");
+			e.printStackTrace();
+		} 
 		if(index == 1){
 			egoResult.setStatus("200");
 		}
@@ -107,7 +127,13 @@ public class TbItemController {
 		
 		EgoResult egoResult = new EgoResult();
 		
-		int index = tbItemServiceImpl.updateStatusByPrimarykey(ids, (byte)2);
+		int index = 0;
+		try {
+			index = tbItemServiceImpl.updateStatusByPrimarykey(ids, (byte)2);
+		} catch (Exception e) {
+			egoResult.setData("服务器异常");
+			e.printStackTrace();
+		}
 		if(index == 1){
 			egoResult.setStatus("200");
 		}
