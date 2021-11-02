@@ -26,5 +26,5 @@ public interface TbItemDubboService {
 	int insTbItem(TbItem tbItem, TbItemDesc tbItemDesc,TbItemParamItem tbItemParamItem) throws Exception;
 	
 
-
+	List<TbItem> listAll();
 }

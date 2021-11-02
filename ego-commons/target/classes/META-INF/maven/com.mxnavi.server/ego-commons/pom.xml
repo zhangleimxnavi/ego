@@ -10,7 +10,18 @@
   <description>ego-commons utils</description>
   
    <dependencies>
-  	
+
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		</dependency>
+
+  		<dependency>
+  		  	<groupId>com.mxnavi.server</groupId>
+   			<artifactId>ego-pojo</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		
   		<dependency>
 			<groupId>commons-net</groupId>
 			<artifactId>commons-net</artifactId>

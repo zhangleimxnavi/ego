@@ -20,10 +20,15 @@
 	<!--fsjfosoef.jfsljsdhgsjoeeojfa;gjasga'gjds -->
 	
 	<!-- 配置端口 -->
-	<dubbo:protocol name="dubbo" port="20888"></dubbo:protocol>
+	<dubbo:protocol name="dubbo" port="20888" payload="83886080"></dubbo:protocol>
 	<!-- 注册商品功能 -->
 	<dubbo:service interface="com.mxnavi.server.ego.dubbo.service.TbItemDubboService" ref="tbItemDubboServiceImpl"></dubbo:service>
 	<bean id="tbItemDubboServiceImpl" class="com.mxnavi.server.ego.dubbo.service.impl.TbItemDubboServiceImpl"></bean>
+	
+	<!-- 注册商品描述 -->
+	<dubbo:service interface="com.mxnavi.server.ego.dubbo.service.TbItemDescDubboService" ref="tbItemDescDubboServiceImpl"></dubbo:service>
+	<bean id="tbItemDescDubboServiceImpl" class="com.mxnavi.server.ego.dubbo.service.impl.TbItemDescDubboServiceImpl"></bean>
+	
 	
 	<!-- 注册商品类别功能接口 -->
 	<dubbo:service interface="com.mxnavi.server.ego.dubbo.service.TbItemCatDubboService" ref="tbItemCatDubboServiceImpl"></dubbo:service>
@@ -40,6 +45,8 @@
 	<!-- content 功能接口 -->
 	<dubbo:service interface="com.mxnavi.server.ego.dubbo.service.TbContentDubboService" ref="tbContentDubboServiceImpl"></dubbo:service>
 	<bean id="tbContentDubboServiceImpl" class="com.mxnavi.server.ego.dubbo.service.impl.TbContentDubboServiceImpl"></bean>
+	
+	
 	
 	<import resource="../../ApplicationContext-Spring.xml"/>
 </beans>

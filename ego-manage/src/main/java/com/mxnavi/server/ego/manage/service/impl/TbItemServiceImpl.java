@@ -1,12 +1,17 @@
 package com.mxnavi.server.ego.manage.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.mxnavi.server.ego.commons.pojo.EasyUiDataGrid;
+import com.mxnavi.server.ego.commons.util.HttpClientUtil;
 import com.mxnavi.server.ego.commons.util.IDUtils;
+import com.mxnavi.server.ego.commons.util.JsonUtils;
 import com.mxnavi.server.ego.dubbo.service.TbItemDubboService;
 import com.mxnavi.server.ego.manage.service.TbItemService;
 import com.mxnavi.server.ego.pojo.TbItem;
@@ -21,6 +26,8 @@ public class TbItemServiceImpl implements TbItemService{
 	@Reference
 	private TbItemDubboService tbItemDubboServiceImpl;
 	
+	@Value("${com.mxnavi.search.searchUrl}")
+	private String url;
 	
 
 	@Override
@@ -91,8 +98,25 @@ public class TbItemServiceImpl implements TbItemService{
 		tbItemParamItem.setParamData(itemParams);
 		tbItemParamItem.setUpdated(date);
 		
+/*		新增商品时，使用 httpClient的同步方法 同步 solr
+		Map map = new HashMap<>();
+		map.put("desc", desc);
+		map.put("tbItem",tbItem);
+		String response = HttpClientUtil.doPostJson(url, JsonUtils.objectToJson(map));
+		System.out.println(response);*/
+		
+		//新增商品时，使用 httpClient的  异步 方法 同步 solr
+		new Thread(){
+			public void run() {
+				Map map = new HashMap<>();
+				map.put("desc", desc);
+				map.put("tbItem",tbItem);
+				HttpClientUtil.doPostJson(url, JsonUtils.objectToJson(map));
+			};
+		}.start();
+		
 		return tbItemDubboServiceImpl.insTbItem(tbItem,tbItemDesc,tbItemParamItem);
-/*		return 1;*/
+
 	}
 
 

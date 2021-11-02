@@ -93,6 +93,19 @@ public class TbItemDubboServiceImpl implements TbItemDubboService{
 		
 	}
 
+	/* (非 Javadoc)
+	* <p>Description: 查询全部 </p>
+	* @return
+	* @see com.mxnavi.server.ego.dubbo.service.TbItemDubboService#listAll()
+	*/
+	@Override
+	public List<TbItem> listAll() {
+		
+		List<TbItem> list = tbItemMapper.selectByExample(new TbItemExample());
+		
+		return list;
+	}
+
 
 	
 	
