@@ -75,4 +75,20 @@ public class RedisDaoImpl implements RedisDao{
 		return index;
 	}
 
+
+	/* (·Ç Javadoc)
+	* <p>Description: </p>
+	* @see com.mxnavi.server.ego.redis.dao.RedisDao#expire()
+	*/
+	@Override
+	public long expire(String key, int seconds) {
+		Jedis jedis = this.getJedis(jedisPool);
+		return jedis.expire(key, seconds);
+		
+	}
+
+	
+	
+	
+	
 }

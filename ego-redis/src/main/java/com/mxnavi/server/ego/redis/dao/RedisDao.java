@@ -20,5 +20,6 @@ public interface RedisDao {
 	
 	Jedis getJedis(JedisPool jedisPool);
 
+	long expire(String key, int seconds);
 	
 }

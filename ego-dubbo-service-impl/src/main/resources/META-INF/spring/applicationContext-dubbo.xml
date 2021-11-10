@@ -47,6 +47,9 @@
 	<bean id="tbContentDubboServiceImpl" class="com.mxnavi.server.ego.dubbo.service.impl.TbContentDubboServiceImpl"></bean>
 	
 	
+	<!-- user 功能接口 -->
+	<dubbo:service interface="com.mxnavi.server.ego.dubbo.service.TbUserDubboService" ref="tbUserDubboServiceImpl"></dubbo:service>
+	<bean id="tbUserDubboServiceImpl" class="com.mxnavi.server.ego.dubbo.service.impl.TbUserDubboServiceImpl"></bean>
 	
 	<import resource="../../ApplicationContext-Spring.xml"/>
 </beans>
