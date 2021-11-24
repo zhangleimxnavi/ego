@@ -27,6 +27,9 @@ public class TbItemDescController {
 	@ResponseBody
 	public String itemList(@PathVariable("id") long id){
 		
+		System.out.println("tbItemDescServiceImpl: " + tbItemDescServiceImpl);
+		
+		System.out.println("hello " + tbItemDescServiceImpl.selItemDescById(id));
 		return tbItemDescServiceImpl.selItemDescById(id).getItemDesc();
 	}
 

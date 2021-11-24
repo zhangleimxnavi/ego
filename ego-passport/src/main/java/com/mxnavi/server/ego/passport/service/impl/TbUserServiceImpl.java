@@ -62,6 +62,7 @@ public class TbUserServiceImpl implements TbUserService{
 			user.setPassword(null);
 			result.setData(user);
 		}else{
+			result.setStatus("500");
 			result.setData("没有对应信息");
 		}
 		return result;

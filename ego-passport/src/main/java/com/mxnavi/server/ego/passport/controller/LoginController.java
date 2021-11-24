@@ -41,9 +41,17 @@ public class LoginController {
 	private RedisDao redisDaoImpl;
 	
 	@RequestMapping("/user/showLogin")
-	public String showLogin(@RequestHeader("Referer") String RefererUrl,Model model){
-		model.addAttribute("redirect", RefererUrl);
+	public String showLogin(@RequestHeader("Referer") String RefererUrl,String otherUrl,Model model){
+
 		System.out.println("redirect "+ RefererUrl);
+		System.out.println("redirectUrl: "+ otherUrl);
+		if(otherUrl!=null &&!otherUrl.equals("")){
+			model.addAttribute("redirect", otherUrl);
+		}else{
+			model.addAttribute("redirect", RefererUrl);
+		}
+		
+		
 		return "login";
 	}
 
